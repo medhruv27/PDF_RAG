@@ -4,9 +4,11 @@ from bson import ObjectId
 import os
 import base64
 from openai import OpenAI
-
+from dotenv import load_dotenv
+load_dotenv()
+api_key = os.getenv("GOOGLE_API_KEY")
 client = OpenAI(
-    api_key="AIzaSyBqzQ512h-BQiXLlxZaa4_Ej9Lxm3QyfNo",
+    api_key = api_key,
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
@@ -54,7 +56,7 @@ async def process_file(id: str, file_path: str):
                     {
                         # flake8 : noqa
                         "type": "text",
-                        "text": "Based on the resume below, Roast this resume.",
+                        "text": "You are a Analyst that analyses stockgraph and give helpful insights.",
                     },
                     {
                         "type": "image_url",
